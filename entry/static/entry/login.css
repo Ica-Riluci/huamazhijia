@@ -1,0 +1,180 @@
+#log-in {
+    overflow : hidden;
+    height : 100vh;
+    width : 100vw;
+    background-color : rgb(250, 250, 250);
+}
+
+.sloganbox {
+    display : block;
+    position : fixed;
+    padding : 5vh 0;
+    height : 90vh;
+}
+.slogan {
+    font-family : 'slogan(zh-cn)';
+    margin-left : 4em;
+    display : block;
+    position : relative;
+    padding : calc(45vh - 2em) 0;
+    padding : -webkit-calc(45vh - 1.5em) 0;
+    padding : -moz-calc(45vh - 1.5em) 0;
+    padding : -o-calc(45vh - 1.5em) 0;
+    line-height : 1.5em;
+    font-size : 4.5em;
+}
+
+#loginwindow {
+    display : block;
+    position : fixed;
+    width : 30vw;
+    height : 60vh;
+    top : 20vh;
+    right : 10vw;
+    background-color : rgba(45, 134, 185, 0.7);
+}
+div.inputholder {
+    font-family : 'default';
+    display : block;
+    width : 80%;
+    margin : 2em auto;
+    height : 2em;
+    font-size : 1.2em;
+    border-style : none;
+}
+div.inputholder:nth-child(2) {
+    margin-top : 4em;
+}
+div.inputholder>span.inputlabel {
+    font-family : 'default';
+    margin-left : 1em;
+    line-height : 2em;
+    vertical-align : center;
+    position : absolute;
+    left : 20%;
+    color : rgba(255, 255, 255, 0.6);
+}
+div.inputholder>span.inputlabel::after {
+    position : absolute;
+    left : 3.2em;
+    color : rgba(255, 255, 255, 0.45);
+    content : '|';
+}
+div.inputholder>input {
+    font-family : 'default';
+    color : white;
+    text-indent : 5em;
+    background : transparent;
+    position : absolute;
+    border-radius : 0.6em;
+    border-style : solid;
+    border-color : rgba(255, 255, 255, 0.6);
+    text-align : left;
+    height : 2em;
+    font-size : 1em;
+    width : 60%;
+    left : 20%;
+    transition : border-color 0.3s;
+    -webkit-transition : border-color 0.5s;
+    -moz-transition : border-color 0.5s;
+    -o-transition : border-color 0.5s;
+    outline-style : none;
+}
+div.inputholder>input:focus {
+    border-color : rgba(255, 255, 255, 0.8);
+    outline-style : none;
+}
+button.submitbtn {
+    display : block;
+    margin : 2.5em auto 1em auto;
+    font-size : 2em;
+    background : transparent;
+    color : white;
+    border-style : none;
+    outline-style : none;
+}
+button.submibtn:focus {
+    outline-style : none;
+}
+button.submitbtn::before,
+button.submitbtn::after {
+    display : inline-block;
+    position : relative;
+    opacity : 0;
+    color : white;
+    transition : transform 0.5s, opacity 0.5s;
+    -webkit-transition : -webkit-transform 0.5s, opacity 0.5s;
+    -moz-transition : -moz-transform 0.5s, opacity 0.5s;
+    -o-transition : -o-transform 0.5s, opacity 0.5s;
+}
+button.submitbtn::before {
+    margin-right : 50px;
+    transform : translateX(70px);
+    -webkit-transform : translateX(70px);
+    -moz-transform : translateX(70px);
+    -o-transform : translateX(70px);
+    content : '[';
+}
+button.submitbtn::after {
+    margin-left : 50px;
+    transform : translateX(-70px);
+    -webkit-transform : translateX(-70px);
+    -moz-transform : translateX(-70px);
+    -o-transform : translateX(-70px);
+    content : ']';
+}
+button.submitbtn:hover::before,
+button.submitbtn:hover::after,
+button.submitbtn:focus::before,
+button.submitbtn:focus::after {
+    opacity : 1;
+    transform : translateX(0);
+    -webkit-transform : translateX(0);
+    -moz-transform : translateX(0);
+    -o-transform : translateX(0);
+}
+#loginwindow a,
+#loginwindow a:focus {
+    color : white;
+    text-align : center;
+    width : 100%;
+    display : block;
+    text-decoration : none;
+}
+#loginwindow a::before,
+#loginwindow a::after {
+    display : inline-block;
+    position : relative;
+    opacity : 0;
+    color : white;
+    transition : transform 0.5s, opacity 0.5s;
+    -webkit-transition : -webkit-transform 0.5s, opacity 0.5s;
+    -moz-transition : -moz-transform 0.5s, opacity 0.5s;
+    -o-transition : -o-transform 0.5s, opacity 0.5s;
+}
+#loginwindow a:hover::before,
+#loginwindow a:hover::after,
+#loginwindow a:focus::before,
+#loginwindow a:focus::after {
+    opacity : 1;
+    transform : translateX(0);
+    -webkit-transform : translateX(0);
+    -moz-transform : translateX(0);
+    -o-transform : translateX(0);
+}
+#loginwindow a::before {
+    margin-right : 10px;
+    transform : translateX(20px);
+    -webkit-transform : translateX(20px);
+    -moz-transform : translateX(20px);
+    -o-transform : translateX(20px);
+    content : '<';
+}
+#loginwindow a::after {
+    margin-left : 10px;
+    transform : translateX(-20px);
+    -webkit-transform : translateX(-20px);
+    -moz-transform : translateX(-20px);
+    -o-transform : translateX(-20px);
+    content : '>';    
+}
