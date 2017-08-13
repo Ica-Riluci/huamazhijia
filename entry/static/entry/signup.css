@@ -1,0 +1,11 @@
+#signupwindow {
+    display : block;
+    position : fixed;
+    top : 10vh;
+    left : 20vw;
+    width : 60vw;
+    background-color : rgba(45, 134, 185, 0.7);
+}
+#signupwindow div.inputholder:nth-child(2) {
+    margin-top : 5em;
+}

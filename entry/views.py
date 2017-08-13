@@ -21,4 +21,5 @@ def passin(request):
     return render(request, 'entry/index.html', context)
 
 def studentsignup(request):
-    return HttpResponse('studentsignup')
+    context = {}
+    return render(request, 'entry/signup.html', context)
