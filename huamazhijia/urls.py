@@ -20,6 +20,7 @@ from . import views
 
 urlpatterns = [
     url(r'^entry/', include('entry.urls')),
+    url(r'^validation/', include('validation.urls')),
     url(r'^$', views.passin, name = 'passin'),
     url(r'^admin/', admin.site.urls),
 ]

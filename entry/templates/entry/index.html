@@ -11,9 +11,9 @@
     </head>
     <body id='log-in'>
         <div class='sloganbox'><div class='slogan'>
-            梦想，<br/>&nbsp;&nbsp;从这里起飞
+            梦想，<br/>&nbsp;&nbsp;&nbsp;从这里起飞
         </div></div>
-        <form action="" method='post' id='loginwindow'>
+        <form action="{% url 'validation:studentlogin' %}" method='post' id='loginwindow'>
             {% csrf_token %}
             <div class='inputholder'>
                 <span class='inputlabel'>用户名</span>
@@ -24,7 +24,7 @@
                 <input class='entryinput' name='password' type='password' value='{{ pwinfo }}'/>
             </div>
             <button type='submit' class='submitbtn'>登录</button>
-            <a href='#'>注册</a>
+            <a href="{% url 'entry:studentsignup' %}">注册</a>
         </form>
     </body>
 </html>
