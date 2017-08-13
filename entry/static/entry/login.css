@@ -43,7 +43,7 @@ div.inputholder {
     border-style : none;
 }
 div.inputholder:nth-child(2) {
-    margin-top : 4em;
+    margin-top : 3em;
 }
 div.inputholder>span.inputlabel {
     font-family : 'default';
@@ -86,7 +86,7 @@ div.inputholder>input:focus {
 }
 button.submitbtn {
     display : block;
-    margin : 2.5em auto 1em auto;
+    margin : 2em auto 1em auto;
     font-size : 2em;
     background : transparent;
     color : white;
