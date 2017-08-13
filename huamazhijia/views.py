@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 def passin(request):
     context = {}
-    return render(request, 'index.html', context)
+    return HttpResponse('hi')
