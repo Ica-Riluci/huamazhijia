@@ -1,0 +1,35 @@
+@font-face {
+    font-family : 'slogan(zh-cn)';
+    src : url('rs/slogan[chn].ttf');
+}
+
+* {
+    margin : 0;
+    padding : 0;
+}
+
+#log-in {
+    overflow : hidden;
+    height : 100vh;
+    width : 100vw;
+    background-color : rgb(250, 250, 250);
+}
+
+.sloganbox {
+    display : block;
+    position : fixed;
+    padding : 5vh 0;
+    height : 90vh;
+}
+.slogan {
+    font-family : 'slogan(zh-cn)';
+    margin-left : 2em;
+    display : block;
+    position : relative;
+    padding : calc(45vh - 2em) 0;
+    padding : -webkit-calc(45vh - 1.5em) 0;
+    padding : -moz-calc(45vh - 1.5em) 0;
+    padding : -o-calc(45vh - 1.5em) 0;
+    line-height : 1.5em;
+    font-size : 4.5em;
+}
