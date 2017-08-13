@@ -17,14 +17,15 @@
             {% csrf_token %}
             <div class='inputholder'>
                 <span class='inputlabel'>用户名</span>
-                <input class='entryinput' name='username' value='{{ nameinfo }}'/>
+                <input class='entryinput' name='username' />
             </div>
             <div class='inputholder'>
                 <span class='inputlabel'>密码</span>
-                <input class='entryinput' name='password' type='password' value='{{ pwinfo }}'/>
+                <input class='entryinput' name='password' type='password' />
             </div>
             <button type='submit' class='submitbtn'>登录</button>
             <a href="{% url 'entry:studentsignup' %}">注册</a>
+            <span id='warning'>{{ warninfo }}</span>
         </form>
     </body>
 </html>

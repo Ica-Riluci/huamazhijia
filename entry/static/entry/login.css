@@ -176,5 +176,12 @@ button.submitbtn:focus::after {
     -webkit-transform : translateX(-20px);
     -moz-transform : translateX(-20px);
     -o-transform : translateX(-20px);
-    content : '>';    
+    content : '>';
+}
+#loginwindow span#warning {
+    display : block;
+    margin : 1em auto;
+    color : white;
+    text-align : center;
+    font-weight : bolder;
 }
