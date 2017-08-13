@@ -1,6 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 
 def passin(request):
-    context = {}
-    return HttpResponse('hi')
+    return HttpResponseRedirect(reverse('entry:passin', args=()))
