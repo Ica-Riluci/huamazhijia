@@ -5,16 +5,16 @@
 
 @font-face {
     font-family : 'default';
-    src : url('rs/default[en].ttf');
+    src : url('rs/default[en].otf');
 }
 
 * {
     margin : 0;
     padding : 0;
+    font-family : 'default';
 }
 
 div.inputholder {
-    font-family : 'default';
     display : block;
     width : 80%;
     margin : 2em auto;
@@ -24,4 +24,8 @@ div.inputholder {
 }
 div.inputholder:nth-child(2) {
     margin-top : 3em;
+}
+
+input {
+    letter-spacing : 2px;
 }

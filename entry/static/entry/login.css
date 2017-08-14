@@ -121,20 +121,6 @@ button.submitbtn:focus::after {
     -moz-transform : translateX(0);
     -o-transform : translateX(0);
 }
-div.inputholder nav.radioselector {
-    font-family : 'default';
-    color : white;
-    text-indent : 5em;
-    background : transparent;
-    position : absolute;
-    line-height : 2em;
-    font-size : 1em;
-    width : 60%;
-    left : 20%;
-}
-div.inputholder nav.radioselector input {
-    margin : auto 4px;
-}
 #loginwindow a,
 #loginwindow a:focus {
     color : white;

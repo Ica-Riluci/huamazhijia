@@ -5,7 +5,6 @@
         <meta chareset='utf-8' />
         <title>华妈之家&gt;注册</title>
         <link type='text/css' rel='stylesheet' href="{% static 'entry/common.css' %}" />
-        <link type='text/css' rel='stylesheet' href="{% static 'entry/login.css' %}" />
         <link type='text/css' rel='stylesheet' href="{% static 'entry/signup.css' %}" />
         <link type='image/x-icon' rel='icon' href="{% static 'entry/icon.ico' %}" />
         <link type='image/x-icon' rel='shortcut icon' href="{% static 'entry/icon.ico' %}" />
@@ -13,6 +12,59 @@
     <body>
         <form action='' method='post' id='signupwindow'>
             {% csrf_token %}
+            <div class='inputholder'>
+                <span class='inputlabel'>用户名</span>
+                <input name='username' pattern='^[a-z, A-Z][a-z, A-Z, 0-9, _]*'/>
+                <div class='details'>仅由字母、数字和下划线构成，必须以字母开头</div>
+                <div class='warning'>{{ unwarn }}</div>
+            </div>
+            <div class='inputholder'>
+                <span class='inputlabel'>密码</span>
+                <input name='password' type='password' minlength='8'/>
+                <div class='details'>至少八位</div>
+            </div>
+            <div class='inputholder'>
+                <span class='inputlabel'>密码确认</span>
+                <input name='passwordc' type='password'/>
+                <div class='warning'>{{ pwwarn }}</div>
+            </div>
+            <div class='inputholder'>
+                <span class='inputlabel'>邮箱</span>
+                <input name='email' pattern='\S+@\S+\.\S'/>
+                <div class='warning'>{{ emwarn }}</div>
+            </div>
+            <div class='inputholder'>
+                <span class='inputlabel'>在读学校</span>
+                <input name='school'/>
+                <div class='warning'>{{ schoolwarn }}</div>
+            </div>
+            <div class='inputholder'>
+                <span class='inputlabel'>年级</span>
+                <nav class='selection'>
+                    初一<input class='radio' type='radio' name='grade' value='1'/>
+                    初二<input class='radio' type='radio' name='grade' value='2'/>
+                    初三<input class='radio' type='radio' name='grade' value='3'/>
+                    高一<input class='radio' type='radio' name='grade' value='4'/>
+                    高二<input class='radio' type='radio' name='grade' value='5'/>
+                    高三<input class='radio' type='radio' name='grade' value='6'/>
+                </nav>
+            </div>
+            <div class='inputholder'>
+                <span class='inputlabel'>在读班级</span>
+                <input name='class'/>
+                <div class='warning'>{{ classwarn }}</div>
+            </div>
+            <div class='inputholder'>
+                <span class='inputlabel'>学生联系电话</span>
+                <input name='sphone' pattern='[0-9]+'/>
+                <div class='details'>建议填写手机</div>
+            </div>
+            <div class='inputholder'>
+                <span class='inputlabel'>家长联系电话</span>
+                <input name='pphone' pattern='[0-9]+'/>
+                <div class='details'>建议填写手机</div>
+            </div>
+            <button type='submit' class='submitbtn'>注册</button>
         </form>
     </body>
 </html>

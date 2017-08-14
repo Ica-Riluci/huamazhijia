@@ -1,11 +1,101 @@
 #signupwindow {
     display : block;
-    position : fixed;
+    position : absolute;
     top : 10vh;
     left : 20vw;
     width : 60vw;
+    height : auto;
     background-color : rgba(45, 134, 185, 0.7);
+    padding-bottom : 4em;
+    margin-bottom : 4em;
 }
 #signupwindow div.inputholder:nth-child(2) {
     margin-top : 5em;
+}
+div.inputholder span.inputlabel, div.inputholder input {
+    display : inline-block;
+    height : 2em;
+    font-size : 1em;
+    background : transparent;
+    color : white;
+}
+div.inputholder span.inputlabel {
+    line-height : 2em;
+}
+div.inputholder div.details,
+div.inputholder div.warning {
+    display : block;
+    margin-top : 0.5em;
+    font-size : 0.6em;
+    text-align : right;
+    width : 100%;
+}
+div.inputholder div.warning {
+    color : red;
+}
+div.inputholder>input {
+    border-radius : 0.6em;
+    padding : 0 20px;
+    width : 70%;
+    float : right;
+    border-style : solid;
+    border-color : rgba(255, 255, 255, 0.6);
+    text-align : left;
+    transition : border-color 0.3s;
+    -webkit-transition : border-color 0.5s;
+    -moz-transition : border-color 0.5s;
+    -o-transition : border-color 0.5s;
+    outline-style : none;
+}
+div.inputholder input:focus {
+    border-color : rgba(255, 255, 255, 0.8);
+    outline-style : none;
+}
+div.inputholder nav {
+    display : inline-block;
+    float : right;
+    color : white;
+    height : 2em;
+}
+div.inputholder nav input.radio {
+    display : inline-block;
+    width : 0.8em;
+    margin : auto 0.2em;
+}
+button.submitbtn {
+    display : block;
+    float : left;
+    margin : 1em 0 0em 10%;
+    font-size : 1.5em;
+    background : transparent;
+    color : white;
+    border-style : none;
+    outline-style : none;
+}
+button.submibtn:focus {
+    outline-style : none;
+}
+button.submitbtn::after {
+    display : inline-block;
+    position : relative;
+    opacity : 0;
+    color : white;
+    transition : transform 0.5s, opacity 0.5s;
+    -webkit-transition : -webkit-transform 0.5s, opacity 0.5s;
+    -moz-transition : -moz-transform 0.5s, opacity 0.5s;
+    -o-transition : -o-transform 0.5s, opacity 0.5s;
+    margin-left : 30px;
+    transform : translateX(-70px);
+    -webkit-transform : translateX(-70px);
+    -moz-transform : translateX(-70px);
+    -o-transform : translateX(-70px);
+    content : '>';
+}
+button.submitbtn:hover::after,
+button.submitbtn:focus::after {
+    opacity : 1;
+    transform : translateX(0);
+    -webkit-transform : translateX(0);
+    -moz-transform : translateX(0);
+    -o-transform : translateX(0);
 }

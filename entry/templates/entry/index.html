@@ -17,11 +17,11 @@
             {% csrf_token %}
             <div class='inputholder'>
                 <span class='inputlabel'>用户名</span>
-                <input class='entryinput' name='username' />
+                <input class='entryinput' name='username' autofocus='on'/>
             </div>
             <div class='inputholder'>
                 <span class='inputlabel'>密码</span>
-                <input class='entryinput' name='password' type='password' />
+                <input class='entryinput' name='password' type='password' minlength='8'/>
             </div>
             <button type='submit' class='submitbtn'>登录</button>
             <a href="{% url 'entry:studentsignup' %}">注册</a>
