@@ -12,6 +12,9 @@
 #signupwindow div.inputholder:nth-child(2) {
     margin-top : 5em;
 }
+div.inputholder {
+    width : 70%;
+}
 div.inputholder span.inputlabel, div.inputholder input {
     display : inline-block;
     height : 2em;
@@ -67,35 +70,31 @@ button.submitbtn {
     float : left;
     margin : 1em 0 0em 10%;
     font-size : 1.5em;
+    line-height : 2em;
     background : transparent;
     color : white;
-    border-style : none;
+    border : solid 2px white;
+    text-align : center;
     outline-style : none;
 }
 button.submibtn:focus {
     outline-style : none;
 }
-button.submitbtn::after {
-    display : inline-block;
-    position : relative;
+button.submitbtn::before {
+    max-width : 0;
+    position : absolute;
     opacity : 0;
-    color : white;
-    transition : transform 0.5s, opacity 0.5s;
-    -webkit-transition : -webkit-transform 0.5s, opacity 0.5s;
-    -moz-transition : -moz-transform 0.5s, opacity 0.5s;
-    -o-transition : -o-transform 0.5s, opacity 0.5s;
-    margin-left : 30px;
-    transform : translateX(-70px);
-    -webkit-transform : translateX(-70px);
-    -moz-transform : translateX(-70px);
-    -o-transform : translateX(-70px);
-    content : '>';
+    background-color : white;
+    color : rgb(108, 170, 206);
+    content : attr(data-hover);
+    word-break : keep-all;
+    transition : max-width 0.5s;
+    -webkit-transition : max-width 0.5s;
+    -moz-transition : max-width 0.5s;
+    -o-transition : max-width 0.5s;
 }
-button.submitbtn:hover::after,
-button.submitbtn:focus::after {
+button.submitbtn:hover::before,
+button.submitbtn:focus::before {
+    max-width : 100%;
     opacity : 1;
-    transform : translateX(0);
-    -webkit-transform : translateX(0);
-    -moz-transform : translateX(0);
-    -o-transform : translateX(0);
 }
