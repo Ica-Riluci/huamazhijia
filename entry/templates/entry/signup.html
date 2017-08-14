@@ -13,37 +13,6 @@
     <body>
         <form action='' method='post' id='signupwindow'>
             {% csrf_token %}
-            <div class='inputholder'>
-                <span class='inputlabel'>用户名</span>
-                <input name='username' class='entryinput' />
-            </div>
-            <div class='inputholder'>
-                <span class='inputlabel'>密码</span>
-                <input name='password' class='entryinput' />
-            </div>
-            <div class='inputholder'>
-                <span class='inputlabel'>邮箱</span>
-                <input name='email' class='entryinput' />
-            </div>
-            <div class='inputholder'>
-                <span class='inputlabel'>学校</span>
-                <input name='email' class='entryinput' />
-            </div>
-            <div class='inputholder'>
-                <span class='inputlabel'>年级</span>
-                <nav class='radioselector'>
-                    初一<input type='radio' data-hover='初一' value='g1' name='grade'/>
-                    初二<input type='radio' data-hover='初一' value='g2' name='grade'/>
-                    初三<input type='radio' data-hover='初一' value='g3' name='grade'/>
-                    高一<input type='radio' data-hover='初一' value='g4' name='grade'/>
-                    高二<input type='radio' data-hover='初一' value='g5' name='grade'/>
-                    高三<input type='radio' data-hover='初一' value='g6' name='grade'/>
-                </nav>
-            </div>
-            <div class='inputholder'>
-                <span class='inputlabel'>班别</span>
-                <input name='class' class='entryinput' />
-            </div>
         </form>
     </body>
 </html>
