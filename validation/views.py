@@ -5,25 +5,47 @@ from django.urls import reverse
 
 from .models import Student
 
+def studentonlinecheck(request, source):
+    if (source == '1'):
+        _cookie = request.COOKIES.get('online', None)
+        if (_cookie == None):
+            response = HttpResponseRedirect(reverse('entry:passin', args=()))
+            response.set_cookie(key='online', value='true', max_age=86400)
+            response.set_cookie(key='userexists', value='true', max_age=None)
+            response.set_cookie(key='passwordcorrect', value='true', max_age=None)
+            response.set_cookie(key='usernameempty', value='false', max_age=None)
+            response.set_cookie(key='passwordempty', value='false', max_age=None)
+        else:
+            '''
+            response = HttpResponseRedirect(reverse('studentinterface',args=()))
+            response.set_cookie(key='online', value='true', max_age=None)
+            '''
+            response = HttpResponse('wow')
+    return response
+
 def studentlogin(request):
     if (request.method == 'POST'):
         _username = request.POST['username']
         _password = request.POST['password']
         if (_username == ''):
-            settings.USER_NULL = True
-            return HttpResponseRedirect(reverse('entry:passin', args=()))
+            response = HttpResponseRedirect(reverse('entry:passin', args=()))
+            response.set_cookie(key='usernameempty', value='true')
+            return response
         if (_password == ''):
-            settings.PW_NULL = True
-            return HttpResponseRedirect(reverse('entry:passin', args=()))
+            response = HttpResponseRedirect(reverse('entry:passin', args=()))
+            response.set_cookie(key='passwordempty', value='true')
+            return response
         try:
             user = Student.objects.get(username=_username)
             if (user.password != _password):
-                settings.PW_NOT_CORRECT = True
-                return HttpResponseRedirect(reverse('entry:passin', args=()))
+                response = HttpResponseRedirect(reverse('entry:passin', args=()))
+                response.set_cookie(key='passwordcorrect', value='false')
+                return response
             return HttpResponse('studentlogin')
         except:
-            settings.USER_NOT_EXIST = True
-            return HttpResponseRedirect(reverse('entry:passin', args=()))
+            response = HttpResponseRedirect(reverse('entry:passin', args=()))
+            response.set_cookie(key='userexists', value='false')
+            return response
     else:
         return HttpResponseRedirect(reverse('entry:passin', args=()))
 

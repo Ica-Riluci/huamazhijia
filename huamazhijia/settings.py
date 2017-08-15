@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'studentinterface.apps.StudentinterfaceConfig',
     'entry.apps.EntryConfig',
     'validation.apps.ValidationConfig',
     'django.contrib.admin',
@@ -133,3 +134,4 @@ USER_NULL = False
 PW_NULL = False
 USER_REPEAT = False
 PW_CON_FAIL = False
+LAST_LOGIN = None;

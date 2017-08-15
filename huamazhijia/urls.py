@@ -19,8 +19,9 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
+    url(r'^student/', include('studentinterface.urls')),
     url(r'^entry/', include('entry.urls')),
     url(r'^validation/', include('validation.urls')),
-    url(r'^$', views.passin, name = 'passin'),
+    url(r'^$', views.redirect, name = 'redirect'),
     url(r'^admin/', admin.site.urls),
 ]

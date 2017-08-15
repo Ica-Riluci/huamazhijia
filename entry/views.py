@@ -1,24 +1,30 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.conf import settings
+from django.urls import reverse
+from django.http import HttpResponse, HttpResponseRedirect
 
 def passin(request):
     context = {
         'warninfo' : '',
     }
-    if (settings.USER_NOT_EXIST):
+    if (request.COOKIES.get('userexists', 'true') == 'false'):
         context['warninfo'] = '[登录失败]用户不存在'
-        settings.USER_NOT_EXIST = False
-    if (settings.PW_NOT_CORRECT):
+        response = render(request, 'entry/index.html', context)
+        response.set_cookie(key='userexists', value='true', max_age=None)
+    elif (request.COOKIES.get('passwordcorrect', 'true') == 'false'):
         context['warninfo'] = '[登录失败]密码不正确'
-        settings.PW_NOT_CORRECT = False
-    if (settings.USER_NULL):
+        response = render(request, 'entry/index.html', context)
+        response.set_cookie(key='passwordcorrect', value='true', max_age=None)
+    elif (request.COOKIES.get('usernameempty', 'false') == 'true'):
         context['warninfo'] = '[登录失败]用户名为空'
-        settings.USER_NULL = False
-    if (settings.PW_NULL):
+        response = render(request, 'entry/index.html', context)
+        response.set_cookie(key='usernameempty', value='false', max_age=None)
+    elif (request.COOKIES.get('passwordempty', 'false') == 'true'):
         context['warninfo'] = '[登录失败]密码为空'
-        settings.PW_NULL = False
-    return render(request, 'entry/index.html', context)
+        response = render(request, 'entry/index.html', context)
+        response.set_cookie(key='passwordempty', value='false', max_age=None)
+    else:
+        response = render(request, 'entry/index.html', context)
+    return response
 
 def studentsignup(request):
     context = {

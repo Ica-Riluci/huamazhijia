@@ -1,0 +1,36 @@
+@font-face {
+    font-family : 'slogan(zh-cn)';
+    src : url('rs/slogan[chn].ttf');
+}
+
+@font-face {
+    font-family : 'default';
+    src : url('rs/default[en].otf');
+}
+
+@font-face {
+    font-family : 'default(chn)';
+    src : url('rs/default[chn].ttf');
+}
+
+* {
+    margin : 0;
+    padding : 0;
+    font-family : 'default', 'default(chn)';
+}
+
+div.inputholder {
+    display : block;
+    width : 80%;
+    margin : 2em auto;
+    height : 2em;
+    font-size : 1.2em;
+    border-style : none;
+}
+div.inputholder:nth-child(2) {
+    margin-top : 3em;
+}
+
+input {
+    letter-spacing : 2px;
+}
