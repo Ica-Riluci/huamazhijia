@@ -8,6 +8,11 @@
     src : url('rs/default[en].otf');
 }
 
+@font-face {
+    font-family : 'default(chn)';
+    src : url('rs/default[chn].ttf');
+}
+
 * {
     margin : 0;
     padding : 0;
