@@ -10,17 +10,17 @@
         <link type='image/x-icon' rel='shortcut icon' href="{% static 'entry/icon.ico' %}" />
     </head>
     <body>
-        <form action='' method='post' id='signupwindow'>
+        <form action="{% url 'validation:studentsignup' %}" method='post' id='signupwindow'>
             {% csrf_token %}
             <div class='inputholder'>
                 <span class='inputlabel'>用户名</span>
-                <input name='username' pattern='^[a-z, A-Z][a-z, A-Z, 0-9, _]*'/>
+                <input name='username' pattern='^[a-z, A-Z][a-z, A-Z, 0-9, _]*' maxlength='100'/>
                 <div class='details'>仅由字母、数字和下划线构成，必须以字母开头</div>
                 <div class='warning'>{{ unwarn }}</div>
             </div>
             <div class='inputholder'>
                 <span class='inputlabel'>密码</span>
-                <input name='password' type='password' minlength='8'/>
+                <input name='password' type='password' minlength='8' maxlength='128'/>
                 <div class='details'>至少八位</div>
             </div>
             <div class='inputholder'>
@@ -30,12 +30,17 @@
             </div>
             <div class='inputholder'>
                 <span class='inputlabel'>邮箱</span>
-                <input name='email' pattern='\S+@\S+\.\S'/>
+                <input name='email' pattern='\S+@\S+\.\S+' maxlength='100'/>
                 <div class='warning'>{{ emwarn }}</div>
             </div>
             <div class='inputholder'>
+                <span class='inputlabel'>姓名</span>
+                <input name='name' maxlength='100'/>
+                <div class='warning'>{{ nwarn }}</div>
+            </div>
+            <div class='inputholder'>
                 <span class='inputlabel'>在读学校</span>
-                <input name='school'/>
+                <input name='school' maxlength='100'/>
                 <div class='warning'>{{ schoolwarn }}</div>
             </div>
             <div class='inputholder'>
@@ -51,17 +56,17 @@
             </div>
             <div class='inputholder'>
                 <span class='inputlabel'>在读班级</span>
-                <input name='class'/>
+                <input name='class' maxlength='100'/>
                 <div class='warning'>{{ classwarn }}</div>
             </div>
             <div class='inputholder'>
                 <span class='inputlabel'>学生联系电话</span>
-                <input name='sphone' pattern='[0-9]+'/>
+                <input name='sphone' pattern='[0-9]+' maxlength='20'/>
                 <div class='details'>建议填写手机</div>
             </div>
             <div class='inputholder'>
                 <span class='inputlabel'>家长联系电话</span>
-                <input name='pphone' pattern='[0-9]+'/>
+                <input name='pphone' pattern='[0-9]+' maxlength='20'/>
                 <div class='details'>建议填写手机</div>
             </div>
             <button type='submit' class='submitbtn' data-hover='&nbsp;&nbsp;&nbsp;&nbsp;注册&nbsp;&nbsp;&nbsp;&nbsp;'>&nbsp;&nbsp;&nbsp;&nbsp;注册&nbsp;&nbsp;&nbsp;&nbsp;</button>

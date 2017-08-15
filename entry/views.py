@@ -21,5 +21,14 @@ def passin(request):
     return render(request, 'entry/index.html', context)
 
 def studentsignup(request):
-    context = {}
+    context = {
+        'unwarn' : '',
+        'pwwarn' : '',
+    }
+    if (settings.USER_REPEAT):
+        context['unwarn'] = '该用户名已存在'
+        settings.USER_REPEAT = False
+    elif (settings.PW_CON_FAIL):
+        context['pwwarn'] = '两次密码不一致'
+        settings.PW_CON_FAIL = False
     return render(request, 'entry/signup.html', context)

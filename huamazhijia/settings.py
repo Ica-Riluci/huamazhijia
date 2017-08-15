@@ -131,3 +131,5 @@ USER_NOT_EXIST = False
 PW_NOT_CORRECT = False
 USER_NULL = False
 PW_NULL = False
+USER_REPEAT = False
+PW_CON_FAIL = False
