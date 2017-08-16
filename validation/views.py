@@ -10,17 +10,13 @@ def studentonlinecheck(request, source):
         _cookie = request.COOKIES.get('online', None)
         if (_cookie == None):
             response = HttpResponseRedirect(reverse('entry:passin', args=()))
-            response.set_cookie(key='online', value='true', max_age=86400)
+            response.set_cookie(key='online', value='true', max_age=600)
             response.set_cookie(key='userexists', value='true', max_age=None)
             response.set_cookie(key='passwordcorrect', value='true', max_age=None)
             response.set_cookie(key='usernameempty', value='false', max_age=None)
             response.set_cookie(key='passwordempty', value='false', max_age=None)
         else:
-            '''
-            response = HttpResponseRedirect(reverse('studentinterface',args=()))
-            response.set_cookie(key='online', value='true', max_age=None)
-            '''
-            response = HttpResponse('wow')
+            response = HttpResponseRedirect(reverse('studentinterface:index',args=()))
     return response
 
 def studentlogin(request):
@@ -41,7 +37,9 @@ def studentlogin(request):
                 response = HttpResponseRedirect(reverse('entry:passin', args=()))
                 response.set_cookie(key='passwordcorrect', value='false')
                 return response
-            return HttpResponse('studentlogin')
+            feedback = HttpResponseRedirect(reverse('validation:studentonlinecheck', args=('1')))
+            feedback.set_cookie(key='online', value='true', max_age=600)
+            return HttpResponseRedirect(reverse('studentinterface:index', args=()))
         except:
             response = HttpResponseRedirect(reverse('entry:passin', args=()))
             response.set_cookie(key='userexists', value='false')
@@ -56,12 +54,14 @@ def studentsignup(request):
         pwconfirm = request.POST['passwordc']
         try:
             user = Student.objects.get(username=_username)
-            settings.USER_REPEAT = True
-            return HttpResponseRedirect(reverse('entry:studentsignup', args=()))
+            response = HttpResponseRedirect(reverse('entry:studentsignup', args=()))
+            response.set_cookie(key='userrepeat', value='true')
+            return response
         except:
             if (_password != pwconfirm):
-                settings.PW_CON_FAIL = True
-                return HttpResposneRedirect(reverse('entry:studentsignup', args=()))
+                response = HttpResponseRedirect(reverse('entry:studentsignup', args=()))
+                response.set_cookie(key='passworddiff', value='true')
+                return response
             _email = request.POST['email']
             _name = request.POST['name']
             _school = request.POST['school']

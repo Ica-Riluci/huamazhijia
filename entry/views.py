@@ -31,10 +31,16 @@ def studentsignup(request):
         'unwarn' : '',
         'pwwarn' : '',
     }
-    if (settings.USER_REPEAT):
+    _repeat = request.COOKIES.get('userrepeat', 'false')
+    _diff = request.COOKIES.get('passworddiff', 'false')
+    if (_repeat == 'true'):
         context['unwarn'] = '该用户名已存在'
-        settings.USER_REPEAT = False
-    elif (settings.PW_CON_FAIL):
+        response = render(request, 'entry/signup.html', context)
+        response.set_cookie(key='userrepeat', value='false')
+    elif (_diff == 'true'):
         context['pwwarn'] = '两次密码不一致'
-        settings.PW_CON_FAIL = False
-    return render(request, 'entry/signup.html', context)
+        response = render(request, 'entry/signup.html', context)
+        response.set_cookie(key='passworddiff', value='false')
+    else:
+        response = render(request, 'entry/signup.html', context)
+    return response
