@@ -5,16 +5,23 @@ from django.urls import reverse
 
 from .models import Student
 
-def studentonlinecheck(request, source):
-    if (source == '1'):
-        _cookie = request.COOKIES.get('online', None)
-        if (_cookie == None):
+def updatestatus(isonline):
+    feedback = HttpResponseRedirect(reverse('validation:studentonlinecheck', args=('1', 'root')))
+    if (isonline):
+        feedback.set_cookie('online', 'true', 600, None, '/', None, None, False)
+    else:
+        feedback.set_cookie('online', 'false', None, None, '/', None, None, False)
+    return feedback
+
+def studentonlinecheck(request, sourceid, source):
+    if (sourceid == '1'):
+        _cookie = request.COOKIES.get('online', 'false')
+        if (_cookie == 'false'):
             response = HttpResponseRedirect(reverse('entry:passin', args=()))
-            response.set_cookie(key='online', value='true', max_age=600)
-            response.set_cookie(key='userexists', value='true', max_age=None)
-            response.set_cookie(key='passwordcorrect', value='true', max_age=None)
-            response.set_cookie(key='usernameempty', value='false', max_age=None)
-            response.set_cookie(key='passwordempty', value='false', max_age=None)
+            response.set_cookie('userexists', 'true', None, None, '/', None, None, False)
+            response.set_cookie('passwordcorrect', 'true', None, None, '/', None, None, False)
+            response.set_cookie('usernameempty', 'false', None, None, '/', None, None, False)
+            response.set_cookie('passwordempty', 'false', None, None, '/', None, None, False)
         else:
             response = HttpResponseRedirect(reverse('studentinterface:index',args=()))
     return response
@@ -25,24 +32,24 @@ def studentlogin(request):
         _password = request.POST['password']
         if (_username == ''):
             response = HttpResponseRedirect(reverse('entry:passin', args=()))
-            response.set_cookie(key='usernameempty', value='true')
+            response.set_cookie('usernameempty', 'true', None, None, '/', None, None, False)
             return response
         if (_password == ''):
             response = HttpResponseRedirect(reverse('entry:passin', args=()))
-            response.set_cookie(key='passwordempty', value='true')
+            response.set_cookie('passwordempty', 'true', None, None, '/', None, None, False)
             return response
         try:
             user = Student.objects.get(username=_username)
             if (user.password != _password):
                 response = HttpResponseRedirect(reverse('entry:passin', args=()))
-                response.set_cookie(key='passwordcorrect', value='false')
+                response.set_cookie('passwordcorrect', 'false', None, None, '/', None, None, False)
+                print('here')
                 return response
-            feedback = HttpResponseRedirect(reverse('validation:studentonlinecheck', args=('1')))
-            feedback.set_cookie(key='online', value='true', max_age=600)
+            updatestatus(True)
             return HttpResponseRedirect(reverse('studentinterface:index', args=()))
         except:
             response = HttpResponseRedirect(reverse('entry:passin', args=()))
-            response.set_cookie(key='userexists', value='false')
+            response.set_cookie('userexists', 'false', None, None, '/', None, None, False)
             return response
     else:
         return HttpResponseRedirect(reverse('entry:passin', args=()))
@@ -55,12 +62,12 @@ def studentsignup(request):
         try:
             user = Student.objects.get(username=_username)
             response = HttpResponseRedirect(reverse('entry:studentsignup', args=()))
-            response.set_cookie(key='userrepeat', value='true')
+            response.set_cookie('userrepeat', 'true', None, None, '/', None, None, False)
             return response
         except:
             if (_password != pwconfirm):
                 response = HttpResponseRedirect(reverse('entry:studentsignup', args=()))
-                response.set_cookie(key='passworddiff', value='true')
+                response.set_cookie('passworddiff', 'true', None, None, '/', None, None, False)
                 return response
             _email = request.POST['email']
             _name = request.POST['name']
